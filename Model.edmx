@@ -1,0 +1,785 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="Objects" EntityType="Model.Store.Objects" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Files" EntityType="Model.Store.Files" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Comments" EntityType="Model.Store.Comments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="Model.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Categories" EntityType="Model.Store.Categories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Collections" EntityType="Model.Store.Collections" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Marks" EntityType="Model.Store.Marks" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ObjectCategory" EntityType="Model.Store.ObjectCategory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ObjectUser" EntityType="Model.Store.ObjectUser" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ObjectCollection" EntityType="Model.Store.ObjectCollection" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserCollection" EntityType="Model.Store.UserCollection" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CollectionCategory" EntityType="Model.Store.CollectionCategory" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ObjectFile" Association="Model.Store.ObjectFile">
+      <End Role="Object" EntitySet="Objects" />
+      <End Role="File" EntitySet="Files" />
+    </AssociationSet>
+    <AssociationSet Name="ObjectComment" Association="Model.Store.ObjectComment">
+      <End Role="Object" EntitySet="Objects" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ObjectCategory_Object" Association="Model.Store.FK_ObjectCategory_Object">
+      <End Role="Object" EntitySet="Objects" />
+      <End Role="ObjectCategory" EntitySet="ObjectCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ObjectCategory_Category" Association="Model.Store.FK_ObjectCategory_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="ObjectCategory" EntitySet="ObjectCategory" />
+    </AssociationSet>
+    <AssociationSet Name="UserComment" Association="Model.Store.UserComment">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ObjectUser_Object" Association="Model.Store.FK_ObjectUser_Object">
+      <End Role="Object" EntitySet="Objects" />
+      <End Role="ObjectUser" EntitySet="ObjectUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ObjectUser_User" Association="Model.Store.FK_ObjectUser_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="ObjectUser" EntitySet="ObjectUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ObjectCollection_Object" Association="Model.Store.FK_ObjectCollection_Object">
+      <End Role="Object" EntitySet="Objects" />
+      <End Role="ObjectCollection" EntitySet="ObjectCollection" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ObjectCollection_Collection" Association="Model.Store.FK_ObjectCollection_Collection">
+      <End Role="Collection" EntitySet="Collections" />
+      <End Role="ObjectCollection" EntitySet="ObjectCollection" />
+    </AssociationSet>
+    <AssociationSet Name="CollectionComment" Association="Model.Store.CollectionComment">
+      <End Role="Collection" EntitySet="Collections" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="ObjectMark" Association="Model.Store.ObjectMark">
+      <End Role="Object" EntitySet="Objects" />
+      <End Role="Mark" EntitySet="Marks" />
+    </AssociationSet>
+    <AssociationSet Name="CollectionMark" Association="Model.Store.CollectionMark">
+      <End Role="Collection" EntitySet="Collections" />
+      <End Role="Mark" EntitySet="Marks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserCollection_User" Association="Model.Store.FK_UserCollection_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserCollection" EntitySet="UserCollection" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserCollection_Collection" Association="Model.Store.FK_UserCollection_Collection">
+      <End Role="Collection" EntitySet="Collections" />
+      <End Role="UserCollection" EntitySet="UserCollection" />
+    </AssociationSet>
+    <AssociationSet Name="UserMark" Association="Model.Store.UserMark">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Mark" EntitySet="Marks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CollectionCategory_Collection" Association="Model.Store.FK_CollectionCategory_Collection">
+      <End Role="Collection" EntitySet="Collections" />
+      <End Role="CollectionCategory" EntitySet="CollectionCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CollectionCategory_Category" Association="Model.Store.FK_CollectionCategory_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="CollectionCategory" EntitySet="CollectionCategory" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Objects">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AvarageMark" Type="float" Nullable="true" />
+    <Property Name="CreatingDate" Type="datetime" Nullable="false" />
+    <Property Name="File_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Files">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Comments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Object_Id" Type="int" Nullable="true" />
+    <Property Name="User_Id" Type="int" Nullable="false" />
+    <Property Name="Collection_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Collections">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AverageMark" Type="float" Nullable="true" />
+    <Property Name="CreatingDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Marks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Value" Type="int" Nullable="false" />
+    <Property Name="Object_Id" Type="int" Nullable="true" />
+    <Property Name="Collection_Id" Type="int" Nullable="true" />
+    <Property Name="User_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ObjectCategory">
+    <Key>
+      <PropertyRef Name="Objects_Id" />
+      <PropertyRef Name="Categories_Id" />
+    </Key>
+    <Property Name="Objects_Id" Type="int" Nullable="false" />
+    <Property Name="Categories_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ObjectUser">
+    <Key>
+      <PropertyRef Name="Objects_Id" />
+      <PropertyRef Name="Users_Id" />
+    </Key>
+    <Property Name="Objects_Id" Type="int" Nullable="false" />
+    <Property Name="Users_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ObjectCollection">
+    <Key>
+      <PropertyRef Name="Objects_Id" />
+      <PropertyRef Name="Collections_Id" />
+    </Key>
+    <Property Name="Objects_Id" Type="int" Nullable="false" />
+    <Property Name="Collections_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserCollection">
+    <Key>
+      <PropertyRef Name="Users_Id" />
+      <PropertyRef Name="Collections_Id" />
+    </Key>
+    <Property Name="Users_Id" Type="int" Nullable="false" />
+    <Property Name="Collections_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CollectionCategory">
+    <Key>
+      <PropertyRef Name="Collections_Id" />
+      <PropertyRef Name="Categories_Id" />
+    </Key>
+    <Property Name="Collections_Id" Type="int" Nullable="false" />
+    <Property Name="Categories_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="ObjectFile">
+    <End Role="Object" Type="Model.Store.Objects" Multiplicity="*" />
+    <End Role="File" Type="Model.Store.Files" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="File">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Object">
+        <PropertyRef Name="File_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ObjectComment">
+    <End Role="Object" Type="Model.Store.Objects" Multiplicity="0..1" />
+    <End Role="Comment" Type="Model.Store.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Object">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="Object_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserComment">
+    <End Role="User" Type="Model.Store.Users" Multiplicity="1" />
+    <End Role="Comment" Type="Model.Store.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CollectionComment">
+    <End Role="Collection" Type="Model.Store.Collections" Multiplicity="0..1" />
+    <End Role="Comment" Type="Model.Store.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Collection">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="Collection_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ObjectMark">
+    <End Role="Object" Type="Model.Store.Objects" Multiplicity="0..1" />
+    <End Role="Mark" Type="Model.Store.Marks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Object">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Mark">
+        <PropertyRef Name="Object_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CollectionMark">
+    <End Role="Collection" Type="Model.Store.Collections" Multiplicity="0..1" />
+    <End Role="Mark" Type="Model.Store.Marks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Collection">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Mark">
+        <PropertyRef Name="Collection_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserMark">
+    <End Role="User" Type="Model.Store.Users" Multiplicity="1" />
+    <End Role="Mark" Type="Model.Store.Marks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Mark">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ObjectCategory_Object">
+    <End Role="Object" Type="Model.Store.Objects" Multiplicity="1" />
+    <End Role="ObjectCategory" Type="Model.Store.ObjectCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Object">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ObjectCategory">
+        <PropertyRef Name="Objects_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ObjectCategory_Category">
+    <End Role="ObjectCategory" Type="Model.Store.ObjectCategory" Multiplicity="*" />
+    <End Role="Category" Type="Model.Store.Categories" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ObjectCategory">
+        <PropertyRef Name="Categories_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ObjectUser_Object">
+    <End Role="Object" Type="Model.Store.Objects" Multiplicity="1" />
+    <End Role="ObjectUser" Type="Model.Store.ObjectUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Object">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ObjectUser">
+        <PropertyRef Name="Objects_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ObjectUser_User">
+    <End Role="ObjectUser" Type="Model.Store.ObjectUser" Multiplicity="*" />
+    <End Role="User" Type="Model.Store.Users" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ObjectUser">
+        <PropertyRef Name="Users_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ObjectCollection_Object">
+    <End Role="Object" Type="Model.Store.Objects" Multiplicity="1" />
+    <End Role="ObjectCollection" Type="Model.Store.ObjectCollection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Object">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ObjectCollection">
+        <PropertyRef Name="Objects_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ObjectCollection_Collection">
+    <End Role="ObjectCollection" Type="Model.Store.ObjectCollection" Multiplicity="*" />
+    <End Role="Collection" Type="Model.Store.Collections" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Collection">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ObjectCollection">
+        <PropertyRef Name="Collections_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserCollection_User">
+    <End Role="User" Type="Model.Store.Users" Multiplicity="1" />
+    <End Role="UserCollection" Type="Model.Store.UserCollection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserCollection">
+        <PropertyRef Name="Users_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserCollection_Collection">
+    <End Role="UserCollection" Type="Model.Store.UserCollection" Multiplicity="*" />
+    <End Role="Collection" Type="Model.Store.Collections" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Collection">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserCollection">
+        <PropertyRef Name="Collections_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CollectionCategory_Collection">
+    <End Role="Collection" Type="Model.Store.Collections" Multiplicity="1" />
+    <End Role="CollectionCategory" Type="Model.Store.CollectionCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Collection">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CollectionCategory">
+        <PropertyRef Name="Collections_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CollectionCategory_Category">
+    <End Role="CollectionCategory" Type="Model.Store.CollectionCategory" Multiplicity="*" />
+    <End Role="Category" Type="Model.Store.Categories" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CollectionCategory">
+        <PropertyRef Name="Categories_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Objects" EntityType="Model.Object" />
+          <EntitySet Name="Files" EntityType="Model.File" />
+          <EntitySet Name="Comments" EntityType="Model.Comment" />
+          <EntitySet Name="Users" EntityType="Model.User" />
+          <AssociationSet Name="ObjectFile" Association="Model.ObjectFile">
+            <End Role="Object" EntitySet="Objects" />
+            <End Role="File" EntitySet="Files" />
+          </AssociationSet>
+          <AssociationSet Name="ObjectComment" Association="Model.ObjectComment">
+            <End Role="Object" EntitySet="Objects" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <EntitySet Name="Categories" EntityType="Model.Category" />
+          <AssociationSet Name="ObjectCategory" Association="Model.ObjectCategory">
+            <End Role="Object" EntitySet="Objects" />
+            <End Role="Category" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="UserComment" Association="Model.UserComment">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="ObjectUser" Association="Model.ObjectUser">
+            <End Role="Object" EntitySet="Objects" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="Collections" EntityType="Model.Collection" />
+          <AssociationSet Name="ObjectCollection" Association="Model.ObjectCollection">
+            <End Role="Object" EntitySet="Objects" />
+            <End Role="Collection" EntitySet="Collections" />
+          </AssociationSet>
+          <AssociationSet Name="CollectionComment" Association="Model.CollectionComment">
+            <End Role="Collection" EntitySet="Collections" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <EntitySet Name="Marks" EntityType="Model.Mark" />
+          <AssociationSet Name="ObjectMark" Association="Model.ObjectMark">
+            <End Role="Object" EntitySet="Objects" />
+            <End Role="Mark" EntitySet="Marks" />
+          </AssociationSet>
+          <AssociationSet Name="CollectionMark" Association="Model.CollectionMark">
+            <End Role="Collection" EntitySet="Collections" />
+            <End Role="Mark" EntitySet="Marks" />
+          </AssociationSet>
+          <AssociationSet Name="UserCollection" Association="Model.UserCollection">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Collection" EntitySet="Collections" />
+          </AssociationSet>
+          <AssociationSet Name="UserMark" Association="Model.UserMark">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Mark" EntitySet="Marks" />
+          </AssociationSet>
+          <AssociationSet Name="CollectionCategory" Association="Model.CollectionCategory">
+            <End Role="Collection" EntitySet="Collections" />
+            <End Role="Category" EntitySet="Categories" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Object">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="AvarageMark" Type="Double" Nullable="true" />
+          <NavigationProperty Name="File" Relationship="Model.ObjectFile" FromRole="Object" ToRole="File" />
+          <NavigationProperty Name="Comments" Relationship="Model.ObjectComment" FromRole="Object" ToRole="Comment" />
+          <NavigationProperty Name="Categories" Relationship="Model.ObjectCategory" FromRole="Object" ToRole="Category" />
+          <Property Name="CreatingDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Model.ObjectUser" FromRole="Object" ToRole="User" />
+          <NavigationProperty Name="Collections" Relationship="Model.ObjectCollection" FromRole="Object" ToRole="Collection" />
+          <NavigationProperty Name="Marks" Relationship="Model.ObjectMark" FromRole="Object" ToRole="Mark" />
+        </EntityType>
+        <EntityType Name="File">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Object" Relationship="Model.ObjectFile" FromRole="File" ToRole="Object" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="true" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <NavigationProperty Name="Object" Relationship="Model.ObjectComment" FromRole="Comment" ToRole="Object" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Model.UserComment" FromRole="Comment" ToRole="User" />
+          <NavigationProperty Name="Collection" Relationship="Model.CollectionComment" FromRole="Comment" ToRole="Collection" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Comments" Relationship="Model.UserComment" FromRole="User" ToRole="Comment" />
+          <NavigationProperty Name="Objects" Relationship="Model.ObjectUser" FromRole="User" ToRole="Object" />
+          <NavigationProperty Name="Collections" Relationship="Model.UserCollection" FromRole="User" ToRole="Collection" />
+          <NavigationProperty Name="Marks" Relationship="Model.UserMark" FromRole="User" ToRole="Mark" />
+          <Property Name="Password" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="ObjectFile">
+          <End Type="Model.Object" Role="Object" Multiplicity="1" />
+          <End Type="Model.File" Role="File" Multiplicity="1" />
+        </Association>
+        <Association Name="ObjectComment">
+          <End Type="Model.Object" Role="Object" Multiplicity="0..1" />
+          <End Type="Model.Comment" Role="Comment" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <NavigationProperty Name="Objects" Relationship="Model.ObjectCategory" FromRole="Category" ToRole="Object" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Collections" Relationship="Model.CollectionCategory" FromRole="Category" ToRole="Collection" />
+        </EntityType>
+        <Association Name="ObjectCategory">
+          <End Type="Model.Object" Role="Object" Multiplicity="*" />
+          <End Type="Model.Category" Role="Category" Multiplicity="*" />
+        </Association>
+        <Association Name="UserComment">
+          <End Type="Model.User" Role="User" Multiplicity="1" />
+          <End Type="Model.Comment" Role="Comment" Multiplicity="*" />
+        </Association>
+        <Association Name="ObjectUser">
+          <End Type="Model.Object" Role="Object" Multiplicity="*" />
+          <End Type="Model.User" Role="User" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Collection">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Objects" Relationship="Model.ObjectCollection" FromRole="Collection" ToRole="Object" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="AverageMark" Type="Double" Nullable="true" />
+          <Property Name="CreatingDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Comments" Relationship="Model.CollectionComment" FromRole="Collection" ToRole="Comment" />
+          <NavigationProperty Name="Marks" Relationship="Model.CollectionMark" FromRole="Collection" ToRole="Mark" />
+          <NavigationProperty Name="Users" Relationship="Model.UserCollection" FromRole="Collection" ToRole="User" />
+          <NavigationProperty Name="Categories" Relationship="Model.CollectionCategory" FromRole="Collection" ToRole="Category" />
+        </EntityType>
+        <Association Name="ObjectCollection">
+          <End Type="Model.Object" Role="Object" Multiplicity="*" >
+          </End>
+          <End Type="Model.Collection" Role="Collection" Multiplicity="*" />
+        </Association>
+        <Association Name="CollectionComment">
+          <End Type="Model.Collection" Role="Collection" Multiplicity="0..1" />
+          <End Type="Model.Comment" Role="Comment" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Mark">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Object" Relationship="Model.ObjectMark" FromRole="Mark" ToRole="Object" />
+          <NavigationProperty Name="Collection" Relationship="Model.CollectionMark" FromRole="Mark" ToRole="Collection" />
+          <NavigationProperty Name="User" Relationship="Model.UserMark" FromRole="Mark" ToRole="User" />
+        </EntityType>
+        <Association Name="ObjectMark">
+          <End Type="Model.Object" Role="Object" Multiplicity="0..1" >
+          </End>
+          <End Type="Model.Mark" Role="Mark" Multiplicity="*" />
+        </Association>
+        <Association Name="CollectionMark">
+          <End Type="Model.Collection" Role="Collection" Multiplicity="0..1" />
+          <End Type="Model.Mark" Role="Mark" Multiplicity="*" />
+        </Association>
+        <Association Name="UserCollection">
+          <End Type="Model.User" Role="User" Multiplicity="*" />
+          <End Type="Model.Collection" Role="Collection" Multiplicity="*" />
+        </Association>
+        <Association Name="UserMark">
+          <End Type="Model.User" Role="User" Multiplicity="1" />
+          <End Type="Model.Mark" Role="Mark" Multiplicity="*" />
+        </Association>
+        <Association Name="CollectionCategory">
+          <End Type="Model.Collection" Role="Collection" Multiplicity="*" />
+          <End Type="Model.Category" Role="Category" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ModelContainer">
+    <EntitySetMapping Name="Objects">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Object)">
+        <MappingFragment StoreEntitySet="Objects">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AvarageMark" ColumnName="AvarageMark" />
+          <ScalarProperty Name="CreatingDate" ColumnName="CreatingDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Files">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.File)">
+        <MappingFragment StoreEntitySet="Files">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Comment)">
+        <MappingFragment StoreEntitySet="Comments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Category)">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Collections">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Collection)">
+        <MappingFragment StoreEntitySet="Collections">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AverageMark" ColumnName="AverageMark" />
+          <ScalarProperty Name="CreatingDate" ColumnName="CreatingDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Marks">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Mark)">
+        <MappingFragment StoreEntitySet="Marks">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ObjectFile" TypeName="Model.ObjectFile" StoreEntitySet="Objects">
+      <EndProperty Name="File">
+        <ScalarProperty Name="Id" ColumnName="File_Id" />
+      </EndProperty>
+      <EndProperty Name="Object">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ObjectComment" TypeName="Model.ObjectComment" StoreEntitySet="Comments">
+      <EndProperty Name="Object">
+        <ScalarProperty Name="Id" ColumnName="Object_Id" />
+      </EndProperty>
+      <EndProperty Name="Comment">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Object_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ObjectCategory" TypeName="Model.ObjectCategory" StoreEntitySet="ObjectCategory">
+      <EndProperty Name="Object">
+        <ScalarProperty Name="Id" ColumnName="Objects_Id" />
+      </EndProperty>
+      <EndProperty Name="Category">
+        <ScalarProperty Name="Id" ColumnName="Categories_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserComment" TypeName="Model.UserComment" StoreEntitySet="Comments">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="User_Id" />
+      </EndProperty>
+      <EndProperty Name="Comment">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ObjectUser" TypeName="Model.ObjectUser" StoreEntitySet="ObjectUser">
+      <EndProperty Name="Object">
+        <ScalarProperty Name="Id" ColumnName="Objects_Id" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="Users_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ObjectCollection" TypeName="Model.ObjectCollection" StoreEntitySet="ObjectCollection">
+      <EndProperty Name="Object">
+        <ScalarProperty Name="Id" ColumnName="Objects_Id" />
+      </EndProperty>
+      <EndProperty Name="Collection">
+        <ScalarProperty Name="Id" ColumnName="Collections_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CollectionComment" TypeName="Model.CollectionComment" StoreEntitySet="Comments">
+      <EndProperty Name="Collection">
+        <ScalarProperty Name="Id" ColumnName="Collection_Id" />
+      </EndProperty>
+      <EndProperty Name="Comment">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Collection_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ObjectMark" TypeName="Model.ObjectMark" StoreEntitySet="Marks">
+      <EndProperty Name="Object">
+        <ScalarProperty Name="Id" ColumnName="Object_Id" />
+      </EndProperty>
+      <EndProperty Name="Mark">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Object_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CollectionMark" TypeName="Model.CollectionMark" StoreEntitySet="Marks">
+      <EndProperty Name="Collection">
+        <ScalarProperty Name="Id" ColumnName="Collection_Id" />
+      </EndProperty>
+      <EndProperty Name="Mark">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Collection_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserCollection" TypeName="Model.UserCollection" StoreEntitySet="UserCollection">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="Users_Id" />
+      </EndProperty>
+      <EndProperty Name="Collection">
+        <ScalarProperty Name="Id" ColumnName="Collections_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserMark" TypeName="Model.UserMark" StoreEntitySet="Marks">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="User_Id" />
+      </EndProperty>
+      <EndProperty Name="Mark">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CollectionCategory" TypeName="Model.CollectionCategory" StoreEntitySet="CollectionCategory">
+      <EndProperty Name="Collection">
+        <ScalarProperty Name="Id" ColumnName="Collections_Id" />
+      </EndProperty>
+      <EndProperty Name="Category">
+        <ScalarProperty Name="Id" ColumnName="Categories_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

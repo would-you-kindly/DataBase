@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ModelContainer">
+    <EntitySetMapping Name="Objects">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Object)">
+        <MappingFragment StoreEntitySet="Objects">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AvarageMark" ColumnName="AvarageMark" />
+          <ScalarProperty Name="CreatingDate" ColumnName="CreatingDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Files">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.File)">
+        <MappingFragment StoreEntitySet="Files">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Comment)">
+        <MappingFragment StoreEntitySet="Comments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Category)">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Collections">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Collection)">
+        <MappingFragment StoreEntitySet="Collections">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AverageMark" ColumnName="AverageMark" />
+          <ScalarProperty Name="CreatingDate" ColumnName="CreatingDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Marks">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Mark)">
+        <MappingFragment StoreEntitySet="Marks">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ObjectFile" TypeName="Model.ObjectFile" StoreEntitySet="Objects">
+      <EndProperty Name="File">
+        <ScalarProperty Name="Id" ColumnName="File_Id" />
+      </EndProperty>
+      <EndProperty Name="Object">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ObjectComment" TypeName="Model.ObjectComment" StoreEntitySet="Comments">
+      <EndProperty Name="Object">
+        <ScalarProperty Name="Id" ColumnName="Object_Id" />
+      </EndProperty>
+      <EndProperty Name="Comment">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Object_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ObjectCategory" TypeName="Model.ObjectCategory" StoreEntitySet="ObjectCategory">
+      <EndProperty Name="Object">
+        <ScalarProperty Name="Id" ColumnName="Objects_Id" />
+      </EndProperty>
+      <EndProperty Name="Category">
+        <ScalarProperty Name="Id" ColumnName="Categories_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserComment" TypeName="Model.UserComment" StoreEntitySet="Comments">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="User_Id" />
+      </EndProperty>
+      <EndProperty Name="Comment">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ObjectUser" TypeName="Model.ObjectUser" StoreEntitySet="ObjectUser">
+      <EndProperty Name="Object">
+        <ScalarProperty Name="Id" ColumnName="Objects_Id" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="Users_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ObjectCollection" TypeName="Model.ObjectCollection" StoreEntitySet="ObjectCollection">
+      <EndProperty Name="Object">
+        <ScalarProperty Name="Id" ColumnName="Objects_Id" />
+      </EndProperty>
+      <EndProperty Name="Collection">
+        <ScalarProperty Name="Id" ColumnName="Collections_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CollectionComment" TypeName="Model.CollectionComment" StoreEntitySet="Comments">
+      <EndProperty Name="Collection">
+        <ScalarProperty Name="Id" ColumnName="Collection_Id" />
+      </EndProperty>
+      <EndProperty Name="Comment">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Collection_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ObjectMark" TypeName="Model.ObjectMark" StoreEntitySet="Marks">
+      <EndProperty Name="Object">
+        <ScalarProperty Name="Id" ColumnName="Object_Id" />
+      </EndProperty>
+      <EndProperty Name="Mark">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Object_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CollectionMark" TypeName="Model.CollectionMark" StoreEntitySet="Marks">
+      <EndProperty Name="Collection">
+        <ScalarProperty Name="Id" ColumnName="Collection_Id" />
+      </EndProperty>
+      <EndProperty Name="Mark">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Collection_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserCollection" TypeName="Model.UserCollection" StoreEntitySet="UserCollection">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="Users_Id" />
+      </EndProperty>
+      <EndProperty Name="Collection">
+        <ScalarProperty Name="Id" ColumnName="Collections_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserMark" TypeName="Model.UserMark" StoreEntitySet="Marks">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="User_Id" />
+      </EndProperty>
+      <EndProperty Name="Mark">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CollectionCategory" TypeName="Model.CollectionCategory" StoreEntitySet="CollectionCategory">
+      <EndProperty Name="Collection">
+        <ScalarProperty Name="Id" ColumnName="Collections_Id" />
+      </EndProperty>
+      <EndProperty Name="Category">
+        <ScalarProperty Name="Id" ColumnName="Categories_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

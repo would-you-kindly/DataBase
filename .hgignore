@@ -1,0 +1,15 @@
+syntax: glob
+*.suo
+*.sln
+*.csproj
+*.config
+*.resx
+*.ico
+*.csproj.user
+*.pfx
+[Bb]in/*
+[Oo]bj/*
+[Oo]bjd/*
+[Pp]ackages/*
+[Pp]roperties/*
+[Pp]ublish/*

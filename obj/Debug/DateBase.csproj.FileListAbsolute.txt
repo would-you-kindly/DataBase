@@ -1,0 +1,62 @@
+C:\Users\Home\Desktop\DateBase\bin\Debug\DateBase.exe.config
+C:\Users\Home\Desktop\DateBase\bin\Debug\DateBase.exe
+C:\Users\Home\Desktop\DateBase\bin\Debug\DateBase.pdb
+C:\Users\Home\Desktop\DateBase\obj\Debug\DateBase.csprojResolveAssemblyReference.cache
+C:\Users\Home\Desktop\DateBase\obj\Debug\DateBase.Properties.Resources.resources
+C:\Users\Home\Desktop\DateBase\obj\Debug\DateBase.RegistrationForm.resources
+C:\Users\Home\Desktop\DateBase\obj\Debug\DateBase.csproj.GenerateResource.Cache
+C:\Users\Home\Desktop\DateBase\obj\Debug\DateBase.exe
+C:\Users\Home\Desktop\DateBase\obj\Debug\DateBase.pdb
+C:\Users\Home\Desktop\DateBase\bin\Debug\EntityFramework.dll
+C:\Users\Home\Desktop\DateBase\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Home\Desktop\DateBase\bin\Debug\EntityFramework.xml
+C:\Users\Home\Desktop\DateBase\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Home\Desktop\DateBase\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\Home\Desktop\DateBase\obj\Debug\DateBase.UserAccountForm.resources
+C:\Users\Home\Desktop\DateBase\obj\Debug\DateBase.CreatingObjectForm.resources
+C:\Users\Home\Desktop\DateBase\obj\Debug\DateBase.EntryForm.resources
+C:\Users\Home\Desktop\DateBase\obj\Debug\DateBase.ObjectInfoForm.resources
+C:\Users\Home\Desktop\DateBase\obj\Debug\DateBase.EditObjectForm.resources
+C:\Users\Home\Desktop\DateBase\obj\Debug\DateBase.DataBaseForm.resources
+C:\Users\Home\Desktop\DateBase\obj\Debug\DateBase.CreatingCollectionForm.resources
+C:\Users\Home\Desktop\DateBase\obj\Debug\DateBase.CollectionInfoForm.resources
+C:\Users\Home\Desktop\DateBase\obj\Debug\DateBase.EditCollectionForm.resources
+C:\Users\Home\Desktop\DateBase\obj\Debug\DateBase.QueryForm.resources
+C:\Users\Home\Desktop\DateBase\obj\Debug\DateBase.csproj.ResolveComReference.cache
+C:\Users\Home\Desktop\DateBase\bin\Debug\DateBase.exe.manifest
+C:\Users\Home\Desktop\DateBase\bin\Debug\DateBase.application
+C:\Users\Home\Desktop\DateBase\obj\Debug\DateBase.exe.manifest
+C:\Users\Home\Desktop\DateBase\obj\Debug\DateBase.application
+D:\HSE\Second course\Курсовая работа\Результаты работы\DateBase\bin\Debug\DateBase.exe.config
+D:\HSE\Second course\Курсовая работа\Результаты работы\DateBase\obj\Debug\DateBase.csproj.ResolveComReference.cache
+D:\HSE\Second course\Курсовая работа\Результаты работы\DateBase\obj\Debug\DateBase.exe
+D:\HSE\Second course\Курсовая работа\Результаты работы\DateBase\obj\Debug\DateBase.pdb
+D:\HSE\Second course\Курсовая работа\Окончательные результаты работы\DateBase\bin\Debug\DateBase.exe.config
+D:\HSE\Second course\Курсовая работа\Окончательные результаты работы\DateBase\obj\Debug\DateBase.csproj.ResolveComReference.cache
+D:\HSE\Second course\Курсовая работа\Окончательные результаты работы\DateBase\obj\Debug\DateBase.exe
+D:\HSE\Second course\Курсовая работа\Окончательные результаты работы\DateBase\obj\Debug\DateBase.pdb
+D:\HSE\Second course\Курсовая работа\Окончательные результаты работы\DateBase\bin\Debug\DateBase.exe.manifest
+D:\HSE\Second course\Курсовая работа\Окончательные результаты работы\DateBase\bin\Debug\DateBase.application
+D:\HSE\Second course\Курсовая работа\Окончательные результаты работы\DateBase\bin\Debug\DateBase.exe
+D:\HSE\Second course\Курсовая работа\Окончательные результаты работы\DateBase\bin\Debug\DateBase.pdb
+D:\HSE\Second course\Курсовая работа\Окончательные результаты работы\DateBase\bin\Debug\EntityFramework.dll
+D:\HSE\Second course\Курсовая работа\Окончательные результаты работы\DateBase\bin\Debug\EntityFramework.SqlServer.dll
+D:\HSE\Second course\Курсовая работа\Окончательные результаты работы\DateBase\bin\Debug\EntityFramework.xml
+D:\HSE\Second course\Курсовая работа\Окончательные результаты работы\DateBase\bin\Debug\EntityFramework.SqlServer.xml
+D:\HSE\Second course\Курсовая работа\Окончательные результаты работы\DateBase\bin\Debug\ru\EntityFramework.resources.dll
+D:\HSE\Second course\Курсовая работа\Окончательные результаты работы\DateBase\obj\Debug\DateBase.csprojResolveAssemblyReference.cache
+D:\HSE\Second course\Курсовая работа\Окончательные результаты работы\DateBase\obj\Debug\DateBase.CollectionInfoForm.resources
+D:\HSE\Second course\Курсовая работа\Окончательные результаты работы\DateBase\obj\Debug\DateBase.CreatingCollectionForm.resources
+D:\HSE\Second course\Курсовая работа\Окончательные результаты работы\DateBase\obj\Debug\DateBase.CreatingObjectForm.resources
+D:\HSE\Second course\Курсовая работа\Окончательные результаты работы\DateBase\obj\Debug\DateBase.EditCollectionForm.resources
+D:\HSE\Second course\Курсовая работа\Окончательные результаты работы\DateBase\obj\Debug\DateBase.EditObjectForm.resources
+D:\HSE\Second course\Курсовая работа\Окончательные результаты работы\DateBase\obj\Debug\DateBase.EntryForm.resources
+D:\HSE\Second course\Курсовая работа\Окончательные результаты работы\DateBase\obj\Debug\DateBase.ObjectInfoForm.resources
+D:\HSE\Second course\Курсовая работа\Окончательные результаты работы\DateBase\obj\Debug\DateBase.Properties.Resources.resources
+D:\HSE\Second course\Курсовая работа\Окончательные результаты работы\DateBase\obj\Debug\DateBase.QueryForm.resources
+D:\HSE\Second course\Курсовая работа\Окончательные результаты работы\DateBase\obj\Debug\DateBase.RegistrationForm.resources
+D:\HSE\Second course\Курсовая работа\Окончательные результаты работы\DateBase\obj\Debug\DateBase.UserAccountForm.resources
+D:\HSE\Second course\Курсовая работа\Окончательные результаты работы\DateBase\obj\Debug\DateBase.DataBaseForm.resources
+D:\HSE\Second course\Курсовая работа\Окончательные результаты работы\DateBase\obj\Debug\DateBase.csproj.GenerateResource.Cache
+D:\HSE\Second course\Курсовая работа\Окончательные результаты работы\DateBase\obj\Debug\DateBase.exe.manifest
+D:\HSE\Second course\Курсовая работа\Окончательные результаты работы\DateBase\obj\Debug\DateBase.application

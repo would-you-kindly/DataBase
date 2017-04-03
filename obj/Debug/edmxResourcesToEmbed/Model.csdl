@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="ModelContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Objects" EntityType="Model.Object" />
+    <EntitySet Name="Files" EntityType="Model.File" />
+    <EntitySet Name="Comments" EntityType="Model.Comment" />
+    <EntitySet Name="Users" EntityType="Model.User" />
+    <AssociationSet Name="ObjectFile" Association="Model.ObjectFile">
+      <End Role="Object" EntitySet="Objects" />
+      <End Role="File" EntitySet="Files" />
+    </AssociationSet>
+    <AssociationSet Name="ObjectComment" Association="Model.ObjectComment">
+      <End Role="Object" EntitySet="Objects" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <EntitySet Name="Categories" EntityType="Model.Category" />
+    <AssociationSet Name="ObjectCategory" Association="Model.ObjectCategory">
+      <End Role="Object" EntitySet="Objects" />
+      <End Role="Category" EntitySet="Categories" />
+    </AssociationSet>
+    <AssociationSet Name="UserComment" Association="Model.UserComment">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="ObjectUser" Association="Model.ObjectUser">
+      <End Role="Object" EntitySet="Objects" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <EntitySet Name="Collections" EntityType="Model.Collection" />
+    <AssociationSet Name="ObjectCollection" Association="Model.ObjectCollection">
+      <End Role="Object" EntitySet="Objects" />
+      <End Role="Collection" EntitySet="Collections" />
+    </AssociationSet>
+    <AssociationSet Name="CollectionComment" Association="Model.CollectionComment">
+      <End Role="Collection" EntitySet="Collections" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <EntitySet Name="Marks" EntityType="Model.Mark" />
+    <AssociationSet Name="ObjectMark" Association="Model.ObjectMark">
+      <End Role="Object" EntitySet="Objects" />
+      <End Role="Mark" EntitySet="Marks" />
+    </AssociationSet>
+    <AssociationSet Name="CollectionMark" Association="Model.CollectionMark">
+      <End Role="Collection" EntitySet="Collections" />
+      <End Role="Mark" EntitySet="Marks" />
+    </AssociationSet>
+    <AssociationSet Name="UserCollection" Association="Model.UserCollection">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Collection" EntitySet="Collections" />
+    </AssociationSet>
+    <AssociationSet Name="UserMark" Association="Model.UserMark">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Mark" EntitySet="Marks" />
+    </AssociationSet>
+    <AssociationSet Name="CollectionCategory" Association="Model.CollectionCategory">
+      <End Role="Collection" EntitySet="Collections" />
+      <End Role="Category" EntitySet="Categories" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Object">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="Description" Type="String" Nullable="false" />
+    <Property Name="AvarageMark" Type="Double" Nullable="true" />
+    <NavigationProperty Name="File" Relationship="Model.ObjectFile" FromRole="Object" ToRole="File" />
+    <NavigationProperty Name="Comments" Relationship="Model.ObjectComment" FromRole="Object" ToRole="Comment" />
+    <NavigationProperty Name="Categories" Relationship="Model.ObjectCategory" FromRole="Object" ToRole="Category" />
+    <Property Name="CreatingDate" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="Model.ObjectUser" FromRole="Object" ToRole="User" />
+    <NavigationProperty Name="Collections" Relationship="Model.ObjectCollection" FromRole="Object" ToRole="Collection" />
+    <NavigationProperty Name="Marks" Relationship="Model.ObjectMark" FromRole="Object" ToRole="Mark" />
+  </EntityType>
+  <EntityType Name="File">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <NavigationProperty Name="Object" Relationship="Model.ObjectFile" FromRole="File" ToRole="Object" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="true" />
+    <Property Name="Description" Type="String" Nullable="false" />
+    <NavigationProperty Name="Object" Relationship="Model.ObjectComment" FromRole="Comment" ToRole="Object" />
+    <Property Name="Date" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Model.UserComment" FromRole="Comment" ToRole="User" />
+    <NavigationProperty Name="Collection" Relationship="Model.CollectionComment" FromRole="Comment" ToRole="Collection" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <NavigationProperty Name="Comments" Relationship="Model.UserComment" FromRole="User" ToRole="Comment" />
+    <NavigationProperty Name="Objects" Relationship="Model.ObjectUser" FromRole="User" ToRole="Object" />
+    <NavigationProperty Name="Collections" Relationship="Model.UserCollection" FromRole="User" ToRole="Collection" />
+    <NavigationProperty Name="Marks" Relationship="Model.UserMark" FromRole="User" ToRole="Mark" />
+    <Property Name="Password" Type="String" Nullable="false" />
+  </EntityType>
+  <Association Name="ObjectFile">
+    <End Type="Model.Object" Role="Object" Multiplicity="1" />
+    <End Type="Model.File" Role="File" Multiplicity="1" />
+  </Association>
+  <Association Name="ObjectComment">
+    <End Type="Model.Object" Role="Object" Multiplicity="0..1" />
+    <End Type="Model.Comment" Role="Comment" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <NavigationProperty Name="Objects" Relationship="Model.ObjectCategory" FromRole="Category" ToRole="Object" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <NavigationProperty Name="Collections" Relationship="Model.CollectionCategory" FromRole="Category" ToRole="Collection" />
+  </EntityType>
+  <Association Name="ObjectCategory">
+    <End Type="Model.Object" Role="Object" Multiplicity="*" />
+    <End Type="Model.Category" Role="Category" Multiplicity="*" />
+  </Association>
+  <Association Name="UserComment">
+    <End Type="Model.User" Role="User" Multiplicity="1" />
+    <End Type="Model.Comment" Role="Comment" Multiplicity="*" />
+  </Association>
+  <Association Name="ObjectUser">
+    <End Type="Model.Object" Role="Object" Multiplicity="*" />
+    <End Type="Model.User" Role="User" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Collection">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <NavigationProperty Name="Objects" Relationship="Model.ObjectCollection" FromRole="Collection" ToRole="Object" />
+    <Property Name="Description" Type="String" Nullable="false" />
+    <Property Name="AverageMark" Type="Double" Nullable="true" />
+    <Property Name="CreatingDate" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="Comments" Relationship="Model.CollectionComment" FromRole="Collection" ToRole="Comment" />
+    <NavigationProperty Name="Marks" Relationship="Model.CollectionMark" FromRole="Collection" ToRole="Mark" />
+    <NavigationProperty Name="Users" Relationship="Model.UserCollection" FromRole="Collection" ToRole="User" />
+    <NavigationProperty Name="Categories" Relationship="Model.CollectionCategory" FromRole="Collection" ToRole="Category" />
+  </EntityType>
+  <Association Name="ObjectCollection">
+    <End Type="Model.Object" Role="Object" Multiplicity="*" />
+    <End Type="Model.Collection" Role="Collection" Multiplicity="*" />
+  </Association>
+  <Association Name="CollectionComment">
+    <End Type="Model.Collection" Role="Collection" Multiplicity="0..1" />
+    <End Type="Model.Comment" Role="Comment" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Mark">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Value" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Object" Relationship="Model.ObjectMark" FromRole="Mark" ToRole="Object" />
+    <NavigationProperty Name="Collection" Relationship="Model.CollectionMark" FromRole="Mark" ToRole="Collection" />
+    <NavigationProperty Name="User" Relationship="Model.UserMark" FromRole="Mark" ToRole="User" />
+  </EntityType>
+  <Association Name="ObjectMark">
+    <End Type="Model.Object" Role="Object" Multiplicity="0..1" />
+    <End Type="Model.Mark" Role="Mark" Multiplicity="*" />
+  </Association>
+  <Association Name="CollectionMark">
+    <End Type="Model.Collection" Role="Collection" Multiplicity="0..1" />
+    <End Type="Model.Mark" Role="Mark" Multiplicity="*" />
+  </Association>
+  <Association Name="UserCollection">
+    <End Type="Model.User" Role="User" Multiplicity="*" />
+    <End Type="Model.Collection" Role="Collection" Multiplicity="*" />
+  </Association>
+  <Association Name="UserMark">
+    <End Type="Model.User" Role="User" Multiplicity="1" />
+    <End Type="Model.Mark" Role="Mark" Multiplicity="*" />
+  </Association>
+  <Association Name="CollectionCategory">
+    <End Type="Model.Collection" Role="Collection" Multiplicity="*" />
+    <End Type="Model.Category" Role="Category" Multiplicity="*" />
+  </Association>
+</Schema>
